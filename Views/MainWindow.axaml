@@ -1,0 +1,83 @@
+<Window xmlns="https://github.com/avaloniaui"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:vm="using:ModerationApp.ViewModels"
+        xmlns:local="using:ModerationApp"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        mc:Ignorable="d" d:DesignWidth="1920" d:DesignHeight="1080"
+        x:Class="ModerationApp.Views.MainWindow"
+        x:DataType="vm:MainWindowViewModel"
+        Icon="/Assets/avalonia-logo.ico"
+        Title="ModerationApp"
+        Height="600"
+        Width="920"
+        Background="Transparent">
+	<Design.DataContext>
+		<!-- This only sets the DataContext for the previewer in an IDE,
+             to set the actual DataContext for runtime, set the DataContext property in code (look at App.axaml.cs) -->
+		<vm:MainWindowViewModel/>
+	</Design.DataContext>
+
+	<Grid>
+		<Grid.ColumnDefinitions>
+			<ColumnDefinition Width="1*"/>
+			<ColumnDefinition Width="5*"/>
+		</Grid.ColumnDefinitions>
+
+		<!-- Sidebar -->
+		<Border Grid.Column="0" Background="#242526">
+			<Grid>
+				<Grid.RowDefinitions>
+					<RowDefinition Height="75"/>
+					<RowDefinition/>
+				</Grid.RowDefinitions>
+
+				<TextBlock Text="Inventory"
+                           Grid.Row="0"
+                           TextAlignment="Center"
+                           VerticalAlignment="Center"
+                           HorizontalAlignment="Center"
+                           Margin="20"
+                           FontSize="20"
+                           Foreground="White" />
+
+				<StackPanel Grid.Row="1">
+					<StackPanel.Styles>
+						<Style Selector="Button">
+							<Setter Property="Background" Value="#3A3B3C" />
+							<Setter Property="Width" Value="100" />
+							<Setter Property="HorizontalAlignment" Value="Center"/>
+							<Setter Property="HorizontalContentAlignment" Value="Left" />
+							<Setter Property="VerticalAlignment" Value="Center" />
+							<Setter Property="Foreground" Value="White" />
+						</Style>
+					</StackPanel.Styles>
+
+					<Button Command="{Binding NavigateToDashboardCommand}">Home</Button>
+					<Button >Inventory</Button>
+					<Button>Analytics</Button>
+					<Button >Settings</Button>
+				</StackPanel>
+
+				<Button 
+				Grid.Row="1" 
+				Margin="10" 
+				VerticalAlignment="Bottom"
+				HorizontalAlignment="Center"
+				Width="100"
+				HorizontalContentAlignment="Center"
+				Foreground="White"
+				>Close</Button>
+			</Grid>
+		</Border>
+
+		<!-- Main Content -->
+		<ContentControl Grid.Column="1" Content="{Binding CurrentPage}">
+			<ContentControl.DataTemplates>
+				<DataTemplate DataType="vm:DashboardViewModel">
+					<local:DashboardPage DataContext="{Binding}"/>
+				</DataTemplate>
+			</ContentControl.DataTemplates>
+		</ContentControl>
+	</Grid>
+</Window>
