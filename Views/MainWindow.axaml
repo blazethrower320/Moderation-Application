@@ -1,4 +1,5 @@
 <Window xmlns="https://github.com/avaloniaui"
+        xmlns:collections="using:System.Collections"
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:vm="using:ModerationApp.ViewModels"
         xmlns:local="using:ModerationApp"
@@ -9,8 +10,6 @@
         x:DataType="vm:MainWindowViewModel"
         Icon="/Assets/avalonia-logo.ico"
         Title="ModerationApp"
-        Height="600"
-        Width="920"
         Background="Transparent">
 	<Design.DataContext>
 		<!-- This only sets the DataContext for the previewer in an IDE,
@@ -20,58 +19,133 @@
 
 	<Grid>
 		<Grid.ColumnDefinitions>
-			<ColumnDefinition Width="1*"/>
-			<ColumnDefinition Width="5*"/>
+			<ColumnDefinition Width="Auto" MinWidth="200" MaxWidth="300"/>
+			<ColumnDefinition Width="*"/>
 		</Grid.ColumnDefinitions>
 
 		<!-- Sidebar -->
-		<Border Grid.Column="0" Background="#242526">
+		<Border Grid.Column="0" Background="#141416" BorderBrush="#2A2A2D" BorderThickness="0,0,1,0">
+			
 			<Grid>
 				<Grid.RowDefinitions>
-					<RowDefinition Height="75"/>
-					<RowDefinition/>
+					<RowDefinition Height="Auto" MinHeight="60"/>
+					<RowDefinition Height="1"/>
+					<RowDefinition Height="*"/>
+					<RowDefinition Height="1"/>
+					<RowDefinition Height="Auto"/>
 				</Grid.RowDefinitions>
 
-				<TextBlock Text="Inventory"
-                           Grid.Row="0"
-                           TextAlignment="Center"
-                           VerticalAlignment="Center"
-                           HorizontalAlignment="Center"
-                           Margin="20"
-                           FontSize="20"
-                           Foreground="White" />
 
-				<StackPanel Grid.Row="1">
+
+				<StackPanel Orientation="Horizontal"
+							Spacing="0"
+							HorizontalAlignment="Center"
+							VerticalAlignment="Center"
+							Margin="5">
+					<Image Source="/Assets/BTModerationIcon.png"
+							Width="35"
+							Height="35">
+						<Image.Effect>
+							<DropShadowEffect Color="#535FF6" BlurRadius="20"/>
+						</Image.Effect>
+					</Image>
+					<TextBlock Text="BTModeration"
+								TextAlignment="Center"
+								VerticalAlignment="Center"
+								HorizontalAlignment="Center"
+								Margin="15"
+								FontSize="20"
+								Foreground="White"/>
+				</StackPanel>
+
+				<Border Grid.Row="1"
+						Height="2"
+						Background="#2A2A2D"/>
+
+
+				<!--- Nav Buttons -->
+				<StackPanel Grid.Row="2" Margin="10">
 					<StackPanel.Styles>
-						<Style Selector="Button">
-							<Setter Property="Background" Value="#3A3B3C" />
-							<Setter Property="Width" Value="100" />
-							<Setter Property="HorizontalAlignment" Value="Center"/>
+						<Style Selector="ToggleButton">
+							<Setter Property="Background" Value="Transparent" />
+							<Setter Property="MinWidth" Value="200" />
+							<Setter Property="MaxWidth" Value="280" />
+							<Setter Property="CornerRadius" Value="10" />
+							<Setter Property="Height" Value="50" />
+							<Setter Property="Margin" Value="5" />
 							<Setter Property="HorizontalContentAlignment" Value="Left" />
-							<Setter Property="VerticalAlignment" Value="Center" />
-							<Setter Property="Foreground" Value="White" />
+							<Setter Property="VerticalContentAlignment" Value="Center" />
+							<Setter Property="HorizontalAlignment" Value="Stretch"/>
+							<Setter Property="Foreground" Value="Gray" />
+							<Setter Property="FontSize" Value="18" />
+							<Setter Property="Padding" Value="10" />
 						</Style>
 					</StackPanel.Styles>
 
-					<Button Command="{Binding NavigateToDashboardCommand}">Home</Button>
-					<Button >Inventory</Button>
-					<Button>Analytics</Button>
-					<Button >Settings</Button>
+					<ToggleButton  Command="{Binding NavigateToDashboardCommand}">
+						<StackPanel Orientation="Horizontal" Spacing=""> 
+							<Image Source="/Assets/dashboard.png"
+									Width="30"
+									Height="30"/>
+							<TextBlock VerticalAlignment="Center" Text="Dashboard"/>
+						</StackPanel>
+					</ToggleButton>
+					<ToggleButton >
+						<StackPanel Orientation="Horizontal" Spacing="5"> 
+							<Image Source="/Assets/players.png"
+									Width="30"
+									Height="30"/>
+							<TextBlock VerticalAlignment="Center" Text="Players"/>
+						</StackPanel>
+					</ToggleButton>
+					<ToggleButton>
+						<StackPanel Orientation="Horizontal" Spacing="5"> 
+							<Image Source="/Assets/punishments.png"
+									Width="30"
+									Height="30"/>
+							<TextBlock VerticalAlignment="Center" Text="Punishments"/>
+						</StackPanel>
+					</ToggleButton>
+					<ToggleButton>
+						<StackPanel Orientation="Horizontal" Spacing="5"> 
+							<Image Source="/Assets/logs.png"
+									Width="30"
+									Height="30"/>
+							<TextBlock VerticalAlignment="Center" Text="Logs"/>
+						</StackPanel>
+					</ToggleButton>
 				</StackPanel>
 
-				<Button 
-				Grid.Row="1" 
-				Margin="10" 
-				VerticalAlignment="Bottom"
-				HorizontalAlignment="Center"
-				Width="100"
-				HorizontalContentAlignment="Center"
-				Foreground="White"
-				>Close</Button>
+
+				<Border Grid.Row="3"
+						Height="2"
+						VerticalAlignment="Bottom"
+						Background="#2A2A2D"/>
+
+				<ToggleButton Grid.Row="4" 
+							  Margin="10" 
+							  HorizontalAlignment="Stretch"
+							  MinWidth="180"
+							  MaxWidth="280"
+							  Background="#222325"
+							  CornerRadius="10"
+							  Height="50"
+							  Padding="10,0">
+						<StackPanel Orientation="Horizontal" Spacing="10" HorizontalAlignment="Center"> 
+							<Image Source="/Assets/settings.png"
+									Width="30"
+									Height="30"/>
+							<TextBlock VerticalAlignment="Center" 
+								Text="Settings"
+								FontSize="18"/>
+						</StackPanel>
+					</ToggleButton>
+				
 			</Grid>
 		</Border>
 
 		<!-- Main Content -->
+		
 		<ContentControl Grid.Column="1" Content="{Binding CurrentPage}">
 			<ContentControl.DataTemplates>
 				<DataTemplate DataType="vm:DashboardViewModel">
@@ -79,5 +153,6 @@
 				</DataTemplate>
 			</ContentControl.DataTemplates>
 		</ContentControl>
+		
 	</Grid>
 </Window>

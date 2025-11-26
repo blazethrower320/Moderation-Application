@@ -1,0 +1,10 @@
+Headings / Strong Text: #ffffff (White) or #f5f5f5
+Main Body Text: #e5e5e5
+Secondary / Muted Text: #a3a3a3
+Disabled / Subtle Text: `#737373
+
+Main Background: #0F0F10 (Mapped to slate-950)
+Sidebar: #141416 (Mapped to slate-900)
+Containers: #191A1C (Mapped to slate-850 and used for subtle backgrounds)
+Cards: #222325 (Mapped to slate-800)
+Buttons/Borders: #2A2B2D (Mapped to slate-700)

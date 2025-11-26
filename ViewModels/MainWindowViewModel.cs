@@ -19,10 +19,7 @@ public partial class MainWindowViewModel : ObservableObject
 
     public MainWindowViewModel()
     {
-
-        
         DashboardPage = new DashboardViewModel();
-        
         CurrentPage = DashboardPage;
     }
 

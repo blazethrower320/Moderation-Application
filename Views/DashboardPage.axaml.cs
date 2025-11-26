@@ -13,4 +13,8 @@ public partial class DashboardPage : UserControl
     {
         InitializeComponent();
     }
+
+    private void ViewAllPunishments_Clicked(object? sender, Avalonia.Input.PointerPressedEventArgs e)
+    {
+    }
 }
