@@ -1,0 +1,83 @@
+<UserControl xmlns="https://github.com/avaloniaui"
+             xmlns:collections="using:System.Collections"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+             xmlns:lvc="using:LiveChartsCore.SkiaSharpView.Avalonia"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             xmlns:vm="using:ModerationApp.ViewModels"
+             xmlns:models="using:ModerationApp.Models"
+             mc:Ignorable="d" d:DesignWidth="1920" d:DesignHeight="1080"
+             x:Class="ModerationApp.PlayersPage"
+             x:DataType="vm:PlayersViewModel">
+
+
+    <Border Background="#0F0F10">
+        <DockPanel HorizontalAlignment="Stretch" 
+                   VerticalAlignment="Stretch"
+                   LastChildFill="True">
+            <!--Header !-->
+			<Border Height="85" DockPanel.Dock="Top" 
+               BorderBrush="#2A2A2D" 
+               BorderThickness="0,0,0,1">
+                <StackPanel Orientation="Vertical">
+					<TextBlock Text="Players" 
+                       VerticalAlignment="Center" 
+                       HorizontalAlignment="Left" 
+                       Foreground="White"
+                       FontWeight="DemiBold"
+                       Margin="20,20,0,0"
+                       FontSize="20"/>
+                    <TextBlock Text="Search and manage server players." 
+                       VerticalAlignment="Center" 
+                       HorizontalAlignment="Left" 
+                       Foreground="Gray"
+                       Margin="20,2,0,0"   
+                       FontSize="14"/>
+                </StackPanel>
+            </Border>
+			<Border Margin="0,0,0,20">
+                <Grid RowDefinitions="Auto, *">
+                    <Border Grid.Row="0" 
+                            Background="#222325" 
+                            CornerRadius="15" 
+                            Padding="20" 
+                            Margin="75,40,75,0">
+                        <Grid ColumnDefinitions="*, Auto, Auto, *" ColumnSpacing="15">
+                            <TextBox Grid.Column="0" 
+                                     Watermark="Search username or ID..."
+                                     Padding="12,10"
+                                     Background="#191A1C"
+                                     CornerRadius="8"
+                                     BorderBrush="Gray"
+                                     BorderThickness="1"/>
+                            <ComboBox Grid.Column="1" 
+                                      PlaceholderText="All Ranks"
+                                      Padding="12,10"
+                                      MinWidth="180"
+                                      Background="#191A1C"
+                                      CornerRadius="8"
+                                      BorderBrush="Gray"
+                                     BorderThickness="1"/>
+                            <ComboBox Grid.Column="2" 
+                                      PlaceholderText="All Status"
+                                      Padding="12,10"
+                                      MinWidth="180"
+                                      Background="#191A1C"
+                                      CornerRadius="8"
+                                      BorderBrush="Gray"
+                                     BorderThickness="1"/>
+                            <ComboBox Grid.Column="3" 
+                                      PlaceholderText="Sort by: Join Date (Newest)"
+                                      Padding="12,10"
+                                      Background="#191A1C"
+                                      CornerRadius="8"
+                                      BorderBrush="Gray"
+                                      BorderThickness="1"
+                                      HorizontalAlignment="Stretch"/>
+                        </Grid>
+                    </Border>
+                </Grid>
+            </Border>
+        </DockPanel>
+	</Border>
+</UserControl>

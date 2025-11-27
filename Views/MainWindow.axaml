@@ -90,7 +90,7 @@
 							<TextBlock VerticalAlignment="Center" Text="Dashboard"/>
 						</StackPanel>
 					</ToggleButton>
-					<ToggleButton >
+					<ToggleButton Command="{Binding NavigateToPlayersPageCommand}">
 						<StackPanel Orientation="Horizontal" Spacing="5"> 
 							<Image Source="/Assets/players.png"
 									Width="30"
@@ -150,6 +150,9 @@
 			<ContentControl.DataTemplates>
 				<DataTemplate DataType="vm:DashboardViewModel">
 					<local:DashboardPage DataContext="{Binding}"/>
+				</DataTemplate>
+				<DataTemplate DataType="vm:PlayersViewModel">
+					<local:PlayersPage DataContext="{Binding}"/>
 				</DataTemplate>
 			</ContentControl.DataTemplates>
 		</ContentControl>
