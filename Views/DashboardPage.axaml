@@ -230,68 +230,68 @@
                                             <Border BorderBrush="#2A2A2D" BorderThickness="0,0,0,1">
                                                 <Grid Grid.ColumnDefinitions="*, *, *, *, *" Margin="15,10,0,10">
 												    <TextBlock Grid.Column="0" Cursor="Hand" Text="{Binding Offender}" FontSize="14" FontWeight="SemiBold" />
-                                                        <Border Grid.Column="1"
-                                                            HorizontalAlignment="Left"
-                                                            VerticalAlignment="Center"
-                                                            CornerRadius="6"
-                                                            Padding="8,3"
-                                                            Classes.warning="{Binding Type, Converter={StaticResource StringEqualsConverter}, ConverterParameter=Warning}"
-                                                            Classes.kick="{Binding Type, Converter={StaticResource StringEqualsConverter}, ConverterParameter=Kick}"
-                                                            Classes.ban="{Binding Type, Converter={StaticResource StringEqualsConverter}, ConverterParameter=Ban}"
-                                                            Classes.notation="{Binding Type, Converter={StaticResource StringEqualsConverter}, ConverterParameter=Notation}"
-                                                            Classes.commendation="{Binding Type, Converter={StaticResource StringEqualsConverter}, ConverterParameter=Commendation}"
-                                                            Classes.mute="{Binding Type, Converter={StaticResource StringEqualsConverter}, ConverterParameter=Mute}">
-                                                        <Border.Styles>
-                                                            <Style Selector="Border.warning">
-                                                                <Setter Property="Background" Value="#1Aeab308"/>
+                                                    <Border Grid.Column="1"
+                                                        HorizontalAlignment="Left"
+                                                        VerticalAlignment="Center"
+                                                        CornerRadius="6"
+                                                        Padding="8,3"
+                                                        Classes.warning="{Binding Type, Converter={StaticResource StringEqualsConverter}, ConverterParameter=Warning}"
+                                                        Classes.kick="{Binding Type, Converter={StaticResource StringEqualsConverter}, ConverterParameter=Kick}"
+                                                        Classes.ban="{Binding Type, Converter={StaticResource StringEqualsConverter}, ConverterParameter=Ban}"
+                                                        Classes.notation="{Binding Type, Converter={StaticResource StringEqualsConverter}, ConverterParameter=Notation}"
+                                                        Classes.commendation="{Binding Type, Converter={StaticResource StringEqualsConverter}, ConverterParameter=Commendation}"
+                                                        Classes.mute="{Binding Type, Converter={StaticResource StringEqualsConverter}, ConverterParameter=Mute}">
+                                                    <Border.Styles>
+                                                        <Style Selector="Border.warning">
+                                                            <Setter Property="Background" Value="#1Aeab308"/>
+                                                        </Style>
+                                                        <Style Selector="Border.kick">
+                                                            <Setter Property="Background" Value="#1Af97316"/>
+                                                        </Style>
+                                                        <Style Selector="Border.ban">
+                                                            <Setter Property="Background" Value="#1Aef4444"/>
+                                                        </Style>
+                                                        <Style Selector="Border.notation">
+                                                            <Setter Property="Background" Value="#1A3b82f6"/>
+                                                        </Style>
+                                                        <Style Selector="Border.commendation">
+                                                            <Setter Property="Background" Value="#1A22c55e"/>
+                                                        </Style>
+                                                        <Style Selector="Border.mute">
+                                                            <Setter Property="Background" Value="#1A0E94B5"/>
+                                                        </Style>
+                                                    </Border.Styles>
+                                                    <TextBlock Text="{Binding Type}" 
+                                                                FontSize="11" 
+                                                                FontWeight="SemiBold"
+                                                                Classes.warning="{Binding Type, Converter={StaticResource StringEqualsConverter}, ConverterParameter=Warning}"
+                                                                Classes.kick="{Binding Type, Converter={StaticResource StringEqualsConverter}, ConverterParameter=Kick}"
+                                                                Classes.ban="{Binding Type, Converter={StaticResource StringEqualsConverter}, ConverterParameter=Ban}"
+                                                                Classes.notation="{Binding Type, Converter={StaticResource StringEqualsConverter}, ConverterParameter=Notation}"
+                                                                Classes.commendation="{Binding Type, Converter={StaticResource StringEqualsConverter}, ConverterParameter=Commendation}"
+                                                                Classes.mute="{Binding Type, Converter={StaticResource StringEqualsConverter}, ConverterParameter=Mute}">
+                                                        <TextBlock.Styles>
+                                                            <Style Selector="TextBlock.warning">
+                                                                <Setter Property="Foreground" Value="#eab308"/>
                                                             </Style>
-                                                            <Style Selector="Border.kick">
-                                                                <Setter Property="Background" Value="#1Af97316"/>
+                                                            <Style Selector="TextBlock.kick">
+                                                                <Setter Property="Foreground" Value="#f97316"/>
                                                             </Style>
-                                                            <Style Selector="Border.ban">
-                                                                <Setter Property="Background" Value="#1Aef4444"/>
+                                                            <Style Selector="TextBlock.ban">
+                                                                <Setter Property="Foreground" Value="#ef4444"/>
                                                             </Style>
-                                                            <Style Selector="Border.notation">
-                                                                <Setter Property="Background" Value="#1A3b82f6"/>
+                                                            <Style Selector="TextBlock.notation">
+                                                                <Setter Property="Foreground" Value="#3b82f6"/>
                                                             </Style>
-                                                            <Style Selector="Border.commendation">
-                                                                <Setter Property="Background" Value="#1A22c55e"/>
+                                                            <Style Selector="TextBlock.commendation">
+                                                                <Setter Property="Foreground" Value="#22c55e"/>
                                                             </Style>
-                                                            <Style Selector="Border.mute">
-                                                                <Setter Property="Background" Value="#1A0E94B5"/>
+                                                            <Style Selector="TextBlock.mute">
+                                                                <Setter Property="Foreground" Value="#0E94B5"/>
                                                             </Style>
-                                                        </Border.Styles>
-                                                        <TextBlock Text="{Binding Type}" 
-                                                                   FontSize="11" 
-                                                                   FontWeight="SemiBold"
-                                                                   Classes.warning="{Binding Type, Converter={StaticResource StringEqualsConverter}, ConverterParameter=Warning}"
-                                                                   Classes.kick="{Binding Type, Converter={StaticResource StringEqualsConverter}, ConverterParameter=Kick}"
-                                                                   Classes.ban="{Binding Type, Converter={StaticResource StringEqualsConverter}, ConverterParameter=Ban}"
-                                                                   Classes.notation="{Binding Type, Converter={StaticResource StringEqualsConverter}, ConverterParameter=Notation}"
-                                                                   Classes.commendation="{Binding Type, Converter={StaticResource StringEqualsConverter}, ConverterParameter=Commendation}"
-                                                                   Classes.mute="{Binding Type, Converter={StaticResource StringEqualsConverter}, ConverterParameter=Mute}">
-                                                            <TextBlock.Styles>
-                                                                <Style Selector="TextBlock.warning">
-                                                                    <Setter Property="Foreground" Value="#eab308"/>
-                                                                </Style>
-                                                                <Style Selector="TextBlock.kick">
-                                                                    <Setter Property="Foreground" Value="#f97316"/>
-                                                                </Style>
-                                                                <Style Selector="TextBlock.ban">
-                                                                    <Setter Property="Foreground" Value="#ef4444"/>
-                                                                </Style>
-                                                                <Style Selector="TextBlock.notation">
-                                                                    <Setter Property="Foreground" Value="#3b82f6"/>
-                                                                </Style>
-                                                                <Style Selector="TextBlock.commendation">
-                                                                    <Setter Property="Foreground" Value="#22c55e"/>
-                                                                </Style>
-                                                                <Style Selector="TextBlock.mute">
-                                                                    <Setter Property="Foreground" Value="#0E94B5"/>
-                                                                </Style>
-                                                            </TextBlock.Styles>
-                                                        </TextBlock>
-                                                    </Border>
+                                                        </TextBlock.Styles>
+                                                    </TextBlock>
+                                                </Border>
 												    <TextBlock Grid.Column="2" Text="{Binding Reason}" FontSize="12"/>
 												    <TextBlock Grid.Column="3" Text="{Binding Issuer}" FontSize="12"/>
 												    <TextBlock Grid.Column="4" Text="{Binding Date}" FontSize="12"/>

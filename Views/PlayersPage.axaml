@@ -2,6 +2,7 @@
              xmlns:collections="using:System.Collections"
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+             xmlns:helpers="using:ModerationApp.Helpers"
              xmlns:lvc="using:LiveChartsCore.SkiaSharpView.Avalonia"
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
              xmlns:vm="using:ModerationApp.ViewModels"
@@ -9,6 +10,11 @@
              mc:Ignorable="d" d:DesignWidth="1920" d:DesignHeight="1080"
              x:Class="ModerationApp.PlayersPage"
              x:DataType="vm:PlayersViewModel">
+
+    <UserControl.Resources>
+    <helpers:StringEqualConverterHelper x:Key="StringEqualConverter" />
+    <helpers:TrustscoreConverterHelper x:Key="TrustscoreColorConverter" />
+    </UserControl.Resources>
 
 
     <Border Background="#0F0F10">
@@ -51,7 +57,7 @@
                                      BorderBrush="Gray"
                                      BorderThickness="1"/>
                             <ComboBox Grid.Column="1" 
-                                      PlaceholderText="All Ranks"
+                                      PlaceholderText="All Permissions"
                                       Padding="12,10"
                                       MinWidth="180"
                                       Background="#191A1C"
@@ -76,8 +82,80 @@
                                       HorizontalAlignment="Stretch"/>
                         </Grid>
                     </Border>
+
+                    <Grid Grid.Row="1" Margin="75,20,75,0">
+                        <Grid RowDefinitions="Auto, *">
+                            <Border Background="#222325" CornerRadius="15,15,0,0">
+                               <Grid ColumnDefinitions="2*,1.2*,1*,1*,1*,1*" Height="45">
+                                    <TextBlock Text="User" Foreground="Gray" FontSize="12" Grid.Column="0" VerticalAlignment="Center" Margin="15,0,0,0" />
+                                    <TextBlock Text="Permission" Foreground="Gray" FontSize="12" Grid.Column="1" VerticalAlignment="Center" HorizontalAlignment="Left"/>
+                                    <TextBlock Text="Status" Foreground="Gray" FontSize="12" Grid.Column="2" VerticalAlignment="Center" HorizontalAlignment="Left"/>
+                                    <TextBlock Text="Trustscore" Foreground="Gray" FontSize="12" Grid.Column="3" VerticalAlignment="Center" HorizontalAlignment="Left"/>
+                                    <TextBlock Text="Joined" Foreground="Gray" FontSize="12" Grid.Column="4" VerticalAlignment="Center" HorizontalAlignment="Left"/>
+                                    <TextBlock Text="Actions" Foreground="Gray" FontSize="12" Grid.Column="5" VerticalAlignment="Center" HorizontalAlignment="Left"/>
+                                </Grid>
+                            </Border>
+
+                            <ScrollViewer Grid.Row="1">
+                                <Border Background="#191A1C" CornerRadius="0,0,15,15">
+                                    <ItemsControl Grid.Row="2" ItemsSource="{Binding PlayerList}">
+							            <ItemsControl.ItemTemplate>
+								            <DataTemplate x:DataType="models:Players">
+                                                <Border BorderBrush="#2A2A2D" BorderThickness="0,0,0,1">
+                                                   <!--User-->
+                                                    <Grid ColumnDefinitions="2*,1.2*,1*,1*,1*,1*" Height="60">
+                                                        <StackPanel Grid.Column="0" Orientation="Horizontal" Spacing="8" VerticalAlignment="Center" Margin="15,0,0,0">
+												            <Image Source="/Assets/players.png" Width="45" Height="45"/>
+                                                            <StackPanel Orientation="Vertical" HorizontalAlignment="Left" VerticalAlignment="Center">
+													            <TextBlock Text="{Binding username}" FontSize="12"/>
+                                                                <TextBlock Text="{Binding playerID}" FontSize="10" Foreground="Gray"/>
+                                                            </StackPanel>
+                                                        </StackPanel>
+
+                                                        <!--Permission Groups-->
+                                                        <Border Grid.Column="1" HorizontalAlignment="Left" VerticalAlignment="Center" CornerRadius="6" Padding="8,3"
+                                                                Classes.default="{Binding PermissionGroups[0], Converter={StaticResource StringEqualConverter}, ConverterParameter=Default}">
+                                                            <Border.Styles>
+                                                                <Style Selector="Border.default">
+                                                                    <Setter Property="Background" Value="#1AA3A2A2"/>
+                                                                </Style>
+                                                            </Border.Styles>
+                                                            <TextBlock Text="{Binding PermissionGroups[0]}" FontSize="11" FontWeight="SemiBold"
+                                                                       Classes.default="{Binding PermissionGroups[0], Converter={StaticResource StringEqualConverter}, ConverterParameter=Default}">
+                                                                <TextBlock.Styles>
+                                                                    <Style Selector="TextBlock.default">
+                                                                        <Setter Property="Foreground" Value="#A3A2A2"/>
+                                                                    </Style>
+                                                                </TextBlock.Styles>
+                                                            </TextBlock>
+                                                        </Border>
+                                                        <!-- Status stuff -->
+                                                        <StackPanel Grid.Column="2" Orientation="Horizontal" VerticalAlignment="Center" Spacing="8">
+                                                            <Border Width="12" Height="12" CornerRadius="6" Background="Green" VerticalAlignment="Center"/>
+                                                            <TextBlock Text="Online" Foreground="Green" VerticalAlignment="Center"/>
+                                                        </StackPanel>
+                                                        <TextBlock Grid.Column="3" Text="{Binding trustscore}" Foreground="Gray" FontSize="12" VerticalAlignment="Center" HorizontalAlignment="Left"/>
+                                                        <TextBlock Grid.Column="4" Text="{Binding firstPlayed, StringFormat='{}{0:MM/dd/yyyy}'}" Foreground="Gray" FontSize="12" HorizontalAlignment="Left" VerticalAlignment="Center"/>
+                                                        <Button Grid.Column="5" HorizontalAlignment="Left" Foreground="White" Background="#2D2D30" Content="Manage" BorderBrush="#3E3E42" CornerRadius="4" BorderThickness="1" Margin="0,0,10,0"></Button>
+                                                    </Grid>
+                                                </Border>
+                                            </DataTemplate>
+                                        </ItemsControl.ItemTemplate>
+                                    </ItemsControl>
+                                </Border>
+                            </ScrollViewer>
+
+                        </Grid>
+                    </Grid>
+
+
                 </Grid>
+
             </Border>
+
+
+
+
         </DockPanel>
 	</Border>
 </UserControl>

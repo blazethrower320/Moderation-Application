@@ -10,4 +10,12 @@ public partial class PlayersPage : UserControl
     {
         InitializeComponent();
     }
+
+    private void TextBlock_ActualThemeVariantChanged(object? sender, System.EventArgs e)
+    {
+    }
+
+    private void TextBlock_ActualThemeVariantChanged_1(object? sender, System.EventArgs e)
+    {
+    }
 }
